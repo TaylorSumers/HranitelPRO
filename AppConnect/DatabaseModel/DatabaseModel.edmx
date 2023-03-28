@@ -1,0 +1,758 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HranitelPROModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeCode" Type="bigint" />
+          <Property Name="EmployeeSurname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="EmployeeName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="EmployeePatronymic" Type="varchar" MaxLength="30" />
+          <Property Name="EmployeeSubdivision" Type="int" />
+          <Property Name="EmployeeDepartment" Type="int" />
+        </EntityType>
+        <EntityType Name="Subdivision">
+          <Key>
+            <PropertyRef Name="SubdivisionID" />
+          </Key>
+          <Property Name="SubdivisionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubdivisionName" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserSurname" Type="varchar" MaxLength="30" />
+          <Property Name="UserName" Type="varchar" MaxLength="30" />
+          <Property Name="UserPatronymic" Type="varchar" MaxLength="30" />
+          <Property Name="UserPhone" Type="varchar" MaxLength="20" />
+          <Property Name="UserEmail" Type="varchar" MaxLength="30" />
+          <Property Name="UserDateofBirth" Type="date" />
+          <Property Name="UserPassportSeries" Type="varchar" MaxLength="4" />
+          <Property Name="UserPassportNumber" Type="varchar" MaxLength="6" />
+          <Property Name="UserPassportScan" Type="text" />
+          <Property Name="UserLogin" Type="varchar" MaxLength="30" />
+          <Property Name="UserPassword" Type="varchar" MaxLength="30" />
+          <Property Name="UserOrganization" Type="varchar" MaxLength="100" />
+          <Property Name="UserPhoto" Type="image" />
+          <Property Name="UserBlackList" Type="bit" />
+          <Property Name="UserIncorrectDataCount" Type="int" />
+        </EntityType>
+        <EntityType Name="VisitPurpose">
+          <Key>
+            <PropertyRef Name="VisitPurposeID" />
+          </Key>
+          <Property Name="VisitPurposeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VisitPurposeName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VisitRejectionPurpose">
+          <Key>
+            <PropertyRef Name="VisitRejectionPurposeID" />
+          </Key>
+          <Property Name="VisitRejectionPurposeID" Type="int" Nullable="false" />
+          <Property Name="VisitRejectionPurposeName" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VisitRequest">
+          <Key>
+            <PropertyRef Name="VisitRequestID" />
+          </Key>
+          <Property Name="VisitRequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VisitUser" Type="int" />
+          <Property Name="VisitSubdivision" Type="int" />
+          <Property Name="VisitEmployee" Type="int" />
+          <Property Name="VisitDateStart" Type="date" />
+          <Property Name="VisitDateEnd" Type="date" />
+          <Property Name="VisitPurpose" Type="int" />
+          <Property Name="VisitType" Type="int" />
+          <Property Name="VisitorsList" Type="text" />
+          <Property Name="VisitNote" Type="varchar" MaxLength="255" />
+          <Property Name="VisitStatus" Type="int" />
+          <Property Name="VisitRejectionPurpose" Type="int" />
+        </EntityType>
+        <EntityType Name="VisitStatus">
+          <Key>
+            <PropertyRef Name="VisitStatusID" />
+          </Key>
+          <Property Name="VisitStatusID" Type="int" Nullable="false" />
+          <Property Name="VisitStatusName" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VisitTimeSpans">
+          <Key>
+            <PropertyRef Name="VisitID" />
+          </Key>
+          <Property Name="VisitID" Type="int" Nullable="false" />
+          <Property Name="VisitDateTime" Type="datetime" />
+          <Property Name="CheckPointIncome" Type="datetime" />
+          <Property Name="CheckpointOutcome" Type="datetime" />
+          <Property Name="SubdivisionIncome" Type="datetime" />
+          <Property Name="SubdivisionOutcome" Type="datetime" />
+        </EntityType>
+        <EntityType Name="VisitType">
+          <Key>
+            <PropertyRef Name="VisitTypeID" />
+          </Key>
+          <Property Name="VisitTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VisitTypeName" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Employee__Employ__3B75D760">
+          <End Role="Subdivision" Type="Self.Subdivision" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subdivision">
+              <PropertyRef Name="SubdivisionID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="EmployeeSubdivision" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__Employ__3C69FB99">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="EmployeeDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VisitRequ__Visit__44FF419A">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="VisitRequest" Type="Self.VisitRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="VisitRequest">
+              <PropertyRef Name="VisitUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VisitRequ__Visit__45F365D3">
+          <End Role="Subdivision" Type="Self.Subdivision" Multiplicity="0..1" />
+          <End Role="VisitRequest" Type="Self.VisitRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subdivision">
+              <PropertyRef Name="SubdivisionID" />
+            </Principal>
+            <Dependent Role="VisitRequest">
+              <PropertyRef Name="VisitSubdivision" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VisitRequ__Visit__46E78A0C">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="VisitRequest" Type="Self.VisitRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="VisitRequest">
+              <PropertyRef Name="VisitEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitRequest_VisitPurpose">
+          <End Role="VisitPurpose" Type="Self.VisitPurpose" Multiplicity="0..1" />
+          <End Role="VisitRequest" Type="Self.VisitRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VisitPurpose">
+              <PropertyRef Name="VisitPurposeID" />
+            </Principal>
+            <Dependent Role="VisitRequest">
+              <PropertyRef Name="VisitPurpose" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitRequest_VisitRejectionPurpose">
+          <End Role="VisitRejectionPurpose" Type="Self.VisitRejectionPurpose" Multiplicity="0..1" />
+          <End Role="VisitRequest" Type="Self.VisitRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VisitRejectionPurpose">
+              <PropertyRef Name="VisitRejectionPurposeID" />
+            </Principal>
+            <Dependent Role="VisitRequest">
+              <PropertyRef Name="VisitRejectionPurpose" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitRequest_VisitStatus">
+          <End Role="VisitStatus" Type="Self.VisitStatus" Multiplicity="0..1" />
+          <End Role="VisitRequest" Type="Self.VisitRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VisitStatus">
+              <PropertyRef Name="VisitStatusID" />
+            </Principal>
+            <Dependent Role="VisitRequest">
+              <PropertyRef Name="VisitStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitRequest_VisitType">
+          <End Role="VisitType" Type="Self.VisitType" Multiplicity="0..1" />
+          <End Role="VisitRequest" Type="Self.VisitRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VisitType">
+              <PropertyRef Name="VisitTypeID" />
+            </Principal>
+            <Dependent Role="VisitRequest">
+              <PropertyRef Name="VisitType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitTimeSpans_VisitRequest">
+          <End Role="VisitRequest" Type="Self.VisitRequest" Multiplicity="1" />
+          <End Role="VisitTimeSpans" Type="Self.VisitTimeSpans" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="VisitRequest">
+              <PropertyRef Name="VisitRequestID" />
+            </Principal>
+            <Dependent Role="VisitTimeSpans">
+              <PropertyRef Name="VisitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HranitelPROModelStoreContainer">
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subdivision" EntityType="Self.Subdivision" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VisitPurpose" EntityType="Self.VisitPurpose" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VisitRejectionPurpose" EntityType="Self.VisitRejectionPurpose" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VisitRequest" EntityType="Self.VisitRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VisitStatus" EntityType="Self.VisitStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VisitTimeSpans" EntityType="Self.VisitTimeSpans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VisitType" EntityType="Self.VisitType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Employee__Employ__3B75D760" Association="Self.FK__Employee__Employ__3B75D760">
+            <End Role="Subdivision" EntitySet="Subdivision" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__Employ__3C69FB99" Association="Self.FK__Employee__Employ__3C69FB99">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VisitRequ__Visit__44FF419A" Association="Self.FK__VisitRequ__Visit__44FF419A">
+            <End Role="User" EntitySet="User" />
+            <End Role="VisitRequest" EntitySet="VisitRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VisitRequ__Visit__45F365D3" Association="Self.FK__VisitRequ__Visit__45F365D3">
+            <End Role="Subdivision" EntitySet="Subdivision" />
+            <End Role="VisitRequest" EntitySet="VisitRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VisitRequ__Visit__46E78A0C" Association="Self.FK__VisitRequ__Visit__46E78A0C">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="VisitRequest" EntitySet="VisitRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitRequest_VisitPurpose" Association="Self.FK_VisitRequest_VisitPurpose">
+            <End Role="VisitPurpose" EntitySet="VisitPurpose" />
+            <End Role="VisitRequest" EntitySet="VisitRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitRequest_VisitRejectionPurpose" Association="Self.FK_VisitRequest_VisitRejectionPurpose">
+            <End Role="VisitRejectionPurpose" EntitySet="VisitRejectionPurpose" />
+            <End Role="VisitRequest" EntitySet="VisitRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitRequest_VisitStatus" Association="Self.FK_VisitRequest_VisitStatus">
+            <End Role="VisitStatus" EntitySet="VisitStatus" />
+            <End Role="VisitRequest" EntitySet="VisitRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitRequest_VisitType" Association="Self.FK_VisitRequest_VisitType">
+            <End Role="VisitType" EntitySet="VisitType" />
+            <End Role="VisitRequest" EntitySet="VisitRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitTimeSpans_VisitRequest" Association="Self.FK_VisitTimeSpans_VisitRequest">
+            <End Role="VisitRequest" EntitySet="VisitRequest" />
+            <End Role="VisitTimeSpans" EntitySet="VisitTimeSpans" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HranitelPROModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Employee__Employ__3C69FB99" FromRole="Department" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeCode" Type="Int64" />
+          <Property Name="EmployeeSurname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmployeeName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmployeePatronymic" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeSubdivision" Type="Int32" />
+          <Property Name="EmployeeDepartment" Type="Int32" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Employee__Employ__3C69FB99" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Subdivision" Relationship="Self.FK__Employee__Employ__3B75D760" FromRole="Employee" ToRole="Subdivision" />
+          <NavigationProperty Name="VisitRequest" Relationship="Self.FK__VisitRequ__Visit__46E78A0C" FromRole="Employee" ToRole="VisitRequest" />
+        </EntityType>
+        <EntityType Name="Subdivision">
+          <Key>
+            <PropertyRef Name="SubdivisionID" />
+          </Key>
+          <Property Name="SubdivisionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubdivisionName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Employee__Employ__3B75D760" FromRole="Subdivision" ToRole="Employee" />
+          <NavigationProperty Name="VisitRequest" Relationship="Self.FK__VisitRequ__Visit__45F365D3" FromRole="Subdivision" ToRole="VisitRequest" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserSurname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UserPatronymic" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UserPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserEmail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UserDateofBirth" Type="DateTime" Precision="0" />
+          <Property Name="UserPassportSeries" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="UserPassportNumber" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="UserPassportScan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserLogin" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UserOrganization" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="UserBlackList" Type="Boolean" />
+          <Property Name="UserIncorrectDataCount" Type="Int32" />
+          <NavigationProperty Name="VisitRequest" Relationship="Self.FK__VisitRequ__Visit__44FF419A" FromRole="User" ToRole="VisitRequest" />
+        </EntityType>
+        <EntityType Name="VisitPurpose">
+          <Key>
+            <PropertyRef Name="VisitPurposeID" />
+          </Key>
+          <Property Name="VisitPurposeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VisitPurposeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VisitRequest" Relationship="Self.FK_VisitRequest_VisitPurpose" FromRole="VisitPurpose" ToRole="VisitRequest" />
+        </EntityType>
+        <EntityType Name="VisitRejectionPurpose">
+          <Key>
+            <PropertyRef Name="VisitRejectionPurposeID" />
+          </Key>
+          <Property Name="VisitRejectionPurposeID" Type="Int32" Nullable="false" />
+          <Property Name="VisitRejectionPurposeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VisitRequest" Relationship="Self.FK_VisitRequest_VisitRejectionPurpose" FromRole="VisitRejectionPurpose" ToRole="VisitRequest" />
+        </EntityType>
+        <EntityType Name="VisitRequest">
+          <Key>
+            <PropertyRef Name="VisitRequestID" />
+          </Key>
+          <Property Name="VisitRequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VisitUser" Type="Int32" />
+          <Property Name="VisitSubdivision" Type="Int32" />
+          <Property Name="VisitEmployee" Type="Int32" />
+          <Property Name="VisitDateStart" Type="DateTime" Precision="0" />
+          <Property Name="VisitDateEnd" Type="DateTime" Precision="0" />
+          <Property Name="VisitPurpose" Type="Int32" />
+          <Property Name="VisitType" Type="Int32" />
+          <Property Name="VisitorsList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VisitNote" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="VisitStatus" Type="Int32" />
+          <Property Name="VisitRejectionPurpose" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__VisitRequ__Visit__46E78A0C" FromRole="VisitRequest" ToRole="Employee" />
+          <NavigationProperty Name="Subdivision" Relationship="Self.FK__VisitRequ__Visit__45F365D3" FromRole="VisitRequest" ToRole="Subdivision" />
+          <NavigationProperty Name="User" Relationship="Self.FK__VisitRequ__Visit__44FF419A" FromRole="VisitRequest" ToRole="User" />
+          <NavigationProperty Name="VisitPurpose1" Relationship="Self.FK_VisitRequest_VisitPurpose" FromRole="VisitRequest" ToRole="VisitPurpose" />
+          <NavigationProperty Name="VisitRejectionPurpose1" Relationship="Self.FK_VisitRequest_VisitRejectionPurpose" FromRole="VisitRequest" ToRole="VisitRejectionPurpose" />
+          <NavigationProperty Name="VisitStatus1" Relationship="Self.FK_VisitRequest_VisitStatus" FromRole="VisitRequest" ToRole="VisitStatus" />
+          <NavigationProperty Name="VisitType1" Relationship="Self.FK_VisitRequest_VisitType" FromRole="VisitRequest" ToRole="VisitType" />
+          <NavigationProperty Name="VisitTimeSpans" Relationship="Self.FK_VisitTimeSpans_VisitRequest" FromRole="VisitRequest" ToRole="VisitTimeSpans" />
+        </EntityType>
+        <EntityType Name="VisitStatus">
+          <Key>
+            <PropertyRef Name="VisitStatusID" />
+          </Key>
+          <Property Name="VisitStatusID" Type="Int32" Nullable="false" />
+          <Property Name="VisitStatusName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VisitRequest" Relationship="Self.FK_VisitRequest_VisitStatus" FromRole="VisitStatus" ToRole="VisitRequest" />
+        </EntityType>
+        <EntityType Name="VisitTimeSpans">
+          <Key>
+            <PropertyRef Name="VisitID" />
+          </Key>
+          <Property Name="VisitID" Type="Int32" Nullable="false" />
+          <Property Name="VisitDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CheckPointIncome" Type="DateTime" Precision="3" />
+          <Property Name="CheckpointOutcome" Type="DateTime" Precision="3" />
+          <Property Name="SubdivisionIncome" Type="DateTime" Precision="3" />
+          <Property Name="SubdivisionOutcome" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="VisitRequest" Relationship="Self.FK_VisitTimeSpans_VisitRequest" FromRole="VisitTimeSpans" ToRole="VisitRequest" />
+        </EntityType>
+        <EntityType Name="VisitType">
+          <Key>
+            <PropertyRef Name="VisitTypeID" />
+          </Key>
+          <Property Name="VisitTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VisitTypeName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VisitRequest" Relationship="Self.FK_VisitRequest_VisitType" FromRole="VisitType" ToRole="VisitRequest" />
+        </EntityType>
+        <Association Name="FK__Employee__Employ__3C69FB99">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="EmployeeDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__Employ__3B75D760">
+          <End Role="Subdivision" Type="Self.Subdivision" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subdivision">
+              <PropertyRef Name="SubdivisionID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="EmployeeSubdivision" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VisitRequ__Visit__46E78A0C">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="VisitRequest" Type="Self.VisitRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="VisitRequest">
+              <PropertyRef Name="VisitEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VisitRequ__Visit__45F365D3">
+          <End Role="Subdivision" Type="Self.Subdivision" Multiplicity="0..1" />
+          <End Role="VisitRequest" Type="Self.VisitRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subdivision">
+              <PropertyRef Name="SubdivisionID" />
+            </Principal>
+            <Dependent Role="VisitRequest">
+              <PropertyRef Name="VisitSubdivision" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VisitRequ__Visit__44FF419A">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="VisitRequest" Type="Self.VisitRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="VisitRequest">
+              <PropertyRef Name="VisitUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitRequest_VisitPurpose">
+          <End Role="VisitPurpose" Type="Self.VisitPurpose" Multiplicity="0..1" />
+          <End Role="VisitRequest" Type="Self.VisitRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VisitPurpose">
+              <PropertyRef Name="VisitPurposeID" />
+            </Principal>
+            <Dependent Role="VisitRequest">
+              <PropertyRef Name="VisitPurpose" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitRequest_VisitRejectionPurpose">
+          <End Role="VisitRejectionPurpose" Type="Self.VisitRejectionPurpose" Multiplicity="0..1" />
+          <End Role="VisitRequest" Type="Self.VisitRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VisitRejectionPurpose">
+              <PropertyRef Name="VisitRejectionPurposeID" />
+            </Principal>
+            <Dependent Role="VisitRequest">
+              <PropertyRef Name="VisitRejectionPurpose" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitRequest_VisitStatus">
+          <End Role="VisitStatus" Type="Self.VisitStatus" Multiplicity="0..1" />
+          <End Role="VisitRequest" Type="Self.VisitRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VisitStatus">
+              <PropertyRef Name="VisitStatusID" />
+            </Principal>
+            <Dependent Role="VisitRequest">
+              <PropertyRef Name="VisitStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitRequest_VisitType">
+          <End Role="VisitType" Type="Self.VisitType" Multiplicity="0..1" />
+          <End Role="VisitRequest" Type="Self.VisitRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VisitType">
+              <PropertyRef Name="VisitTypeID" />
+            </Principal>
+            <Dependent Role="VisitRequest">
+              <PropertyRef Name="VisitType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitTimeSpans_VisitRequest">
+          <End Role="VisitRequest" Type="Self.VisitRequest" Multiplicity="1" />
+          <End Role="VisitTimeSpans" Type="Self.VisitTimeSpans" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="VisitRequest">
+              <PropertyRef Name="VisitRequestID" />
+            </Principal>
+            <Dependent Role="VisitTimeSpans">
+              <PropertyRef Name="VisitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HranitelPROEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Department" EntityType="Self.Department" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Subdivision" EntityType="Self.Subdivision" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="VisitPurpose" EntityType="Self.VisitPurpose" />
+          <EntitySet Name="VisitRejectionPurpose" EntityType="Self.VisitRejectionPurpose" />
+          <EntitySet Name="VisitRequest" EntityType="Self.VisitRequest" />
+          <EntitySet Name="VisitStatus" EntityType="Self.VisitStatus" />
+          <EntitySet Name="VisitTimeSpans" EntityType="Self.VisitTimeSpans" />
+          <EntitySet Name="VisitType" EntityType="Self.VisitType" />
+          <AssociationSet Name="FK__Employee__Employ__3C69FB99" Association="Self.FK__Employee__Employ__3C69FB99">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__Employ__3B75D760" Association="Self.FK__Employee__Employ__3B75D760">
+            <End Role="Subdivision" EntitySet="Subdivision" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VisitRequ__Visit__46E78A0C" Association="Self.FK__VisitRequ__Visit__46E78A0C">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="VisitRequest" EntitySet="VisitRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VisitRequ__Visit__45F365D3" Association="Self.FK__VisitRequ__Visit__45F365D3">
+            <End Role="Subdivision" EntitySet="Subdivision" />
+            <End Role="VisitRequest" EntitySet="VisitRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VisitRequ__Visit__44FF419A" Association="Self.FK__VisitRequ__Visit__44FF419A">
+            <End Role="User" EntitySet="User" />
+            <End Role="VisitRequest" EntitySet="VisitRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitRequest_VisitPurpose" Association="Self.FK_VisitRequest_VisitPurpose">
+            <End Role="VisitPurpose" EntitySet="VisitPurpose" />
+            <End Role="VisitRequest" EntitySet="VisitRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitRequest_VisitRejectionPurpose" Association="Self.FK_VisitRequest_VisitRejectionPurpose">
+            <End Role="VisitRejectionPurpose" EntitySet="VisitRejectionPurpose" />
+            <End Role="VisitRequest" EntitySet="VisitRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitRequest_VisitStatus" Association="Self.FK_VisitRequest_VisitStatus">
+            <End Role="VisitStatus" EntitySet="VisitStatus" />
+            <End Role="VisitRequest" EntitySet="VisitRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitRequest_VisitType" Association="Self.FK_VisitRequest_VisitType">
+            <End Role="VisitType" EntitySet="VisitType" />
+            <End Role="VisitRequest" EntitySet="VisitRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitTimeSpans_VisitRequest" Association="Self.FK_VisitTimeSpans_VisitRequest">
+            <End Role="VisitRequest" EntitySet="VisitRequest" />
+            <End Role="VisitTimeSpans" EntitySet="VisitTimeSpans" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HranitelPROModelStoreContainer" CdmEntityContainer="HranitelPROEntities">
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="HranitelPROModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="HranitelPROModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="EmployeeSurname" ColumnName="EmployeeSurname" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EmployeePatronymic" ColumnName="EmployeePatronymic" />
+                <ScalarProperty Name="EmployeeSubdivision" ColumnName="EmployeeSubdivision" />
+                <ScalarProperty Name="EmployeeDepartment" ColumnName="EmployeeDepartment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subdivision">
+            <EntityTypeMapping TypeName="HranitelPROModel.Subdivision">
+              <MappingFragment StoreEntitySet="Subdivision">
+                <ScalarProperty Name="SubdivisionID" ColumnName="SubdivisionID" />
+                <ScalarProperty Name="SubdivisionName" ColumnName="SubdivisionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HranitelPROModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="HranitelPROModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPatronymic" ColumnName="UserPatronymic" />
+                <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserDateofBirth" ColumnName="UserDateofBirth" />
+                <ScalarProperty Name="UserPassportSeries" ColumnName="UserPassportSeries" />
+                <ScalarProperty Name="UserPassportNumber" ColumnName="UserPassportNumber" />
+                <ScalarProperty Name="UserPassportScan" ColumnName="UserPassportScan" />
+                <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserOrganization" ColumnName="UserOrganization" />
+                <ScalarProperty Name="UserPhoto" ColumnName="UserPhoto" />
+                <ScalarProperty Name="UserBlackList" ColumnName="UserBlackList" />
+                <ScalarProperty Name="UserIncorrectDataCount" ColumnName="UserIncorrectDataCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VisitPurpose">
+            <EntityTypeMapping TypeName="HranitelPROModel.VisitPurpose">
+              <MappingFragment StoreEntitySet="VisitPurpose">
+                <ScalarProperty Name="VisitPurposeID" ColumnName="VisitPurposeID" />
+                <ScalarProperty Name="VisitPurposeName" ColumnName="VisitPurposeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VisitRejectionPurpose">
+            <EntityTypeMapping TypeName="HranitelPROModel.VisitRejectionPurpose">
+              <MappingFragment StoreEntitySet="VisitRejectionPurpose">
+                <ScalarProperty Name="VisitRejectionPurposeID" ColumnName="VisitRejectionPurposeID" />
+                <ScalarProperty Name="VisitRejectionPurposeName" ColumnName="VisitRejectionPurposeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VisitRequest">
+            <EntityTypeMapping TypeName="HranitelPROModel.VisitRequest">
+              <MappingFragment StoreEntitySet="VisitRequest">
+                <ScalarProperty Name="VisitRequestID" ColumnName="VisitRequestID" />
+                <ScalarProperty Name="VisitUser" ColumnName="VisitUser" />
+                <ScalarProperty Name="VisitSubdivision" ColumnName="VisitSubdivision" />
+                <ScalarProperty Name="VisitEmployee" ColumnName="VisitEmployee" />
+                <ScalarProperty Name="VisitDateStart" ColumnName="VisitDateStart" />
+                <ScalarProperty Name="VisitDateEnd" ColumnName="VisitDateEnd" />
+                <ScalarProperty Name="VisitPurpose" ColumnName="VisitPurpose" />
+                <ScalarProperty Name="VisitType" ColumnName="VisitType" />
+                <ScalarProperty Name="VisitorsList" ColumnName="VisitorsList" />
+                <ScalarProperty Name="VisitNote" ColumnName="VisitNote" />
+                <ScalarProperty Name="VisitStatus" ColumnName="VisitStatus" />
+                <ScalarProperty Name="VisitRejectionPurpose" ColumnName="VisitRejectionPurpose" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VisitStatus">
+            <EntityTypeMapping TypeName="HranitelPROModel.VisitStatus">
+              <MappingFragment StoreEntitySet="VisitStatus">
+                <ScalarProperty Name="VisitStatusID" ColumnName="VisitStatusID" />
+                <ScalarProperty Name="VisitStatusName" ColumnName="VisitStatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VisitTimeSpans">
+            <EntityTypeMapping TypeName="HranitelPROModel.VisitTimeSpans">
+              <MappingFragment StoreEntitySet="VisitTimeSpans">
+                <ScalarProperty Name="VisitID" ColumnName="VisitID" />
+                <ScalarProperty Name="VisitDateTime" ColumnName="VisitDateTime" />
+                <ScalarProperty Name="CheckPointIncome" ColumnName="CheckPointIncome" />
+                <ScalarProperty Name="CheckpointOutcome" ColumnName="CheckpointOutcome" />
+                <ScalarProperty Name="SubdivisionIncome" ColumnName="SubdivisionIncome" />
+                <ScalarProperty Name="SubdivisionOutcome" ColumnName="SubdivisionOutcome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VisitType">
+            <EntityTypeMapping TypeName="HranitelPROModel.VisitType">
+              <MappingFragment StoreEntitySet="VisitType">
+                <ScalarProperty Name="VisitTypeID" ColumnName="VisitTypeID" />
+                <ScalarProperty Name="VisitTypeName" ColumnName="VisitTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

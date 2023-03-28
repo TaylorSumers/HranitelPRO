@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5b3f092136084f39861810adab8bbea5" Name="Diagram1">
+        <EntityTypeShape EntityType="HranitelPROModel.Department" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPROModel.Employee" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPROModel.Subdivision" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPROModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPROModel.User" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPROModel.VisitPurpose" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPROModel.VisitRejectionPurpose" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPROModel.VisitRequest" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPROModel.VisitStatus" Width="1.5" PointX="3" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPROModel.VisitTimeSpans" Width="1.5" PointX="7.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPROModel.VisitType" Width="1.5" PointX="3" PointY="21.625" IsExpanded="true" />
+        <AssociationConnector Association="HranitelPROModel.FK__Employee__Employ__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPROModel.FK__Employee__Employ__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPROModel.FK__VisitRequ__Visit__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPROModel.FK__VisitRequ__Visit__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPROModel.FK__VisitRequ__Visit__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPROModel.FK_VisitRequest_VisitPurpose" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPROModel.FK_VisitRequest_VisitRejectionPurpose" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPROModel.FK_VisitRequest_VisitStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPROModel.FK_VisitRequest_VisitType" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPROModel.FK_VisitTimeSpans_VisitRequest" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

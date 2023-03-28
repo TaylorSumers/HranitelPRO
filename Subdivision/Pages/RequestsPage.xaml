@@ -1,0 +1,42 @@
+﻿<Page x:Class="Subdivision.Pages.RequestsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Subdivision.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="675" d:DesignWidth="1200"
+      Title="RequestsPage">
+
+    <Grid Background="White">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*" MinHeight="50"/>
+            <RowDefinition Height="0.1*" MinHeight="50"/>
+            <RowDefinition Height="0.8*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Заявки на посещение" FontSize="40" VerticalAlignment="Center" Margin="10,0"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Margin="10,0">
+            <DatePicker Name="dpDate" Height="20" Width="120" Margin="10,0,40,0" SelectedDateChanged="dpDate_SelectedDateChanged"/>
+            <Button Content="Сбросить" Height="20" Width="120" Name="btnReset" Click="btnReset_Click"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="2" Margin="20" ColumnWidth="*" MinColumnWidth="120" AutoGenerateColumns="False" 
+                  Name="dtgRequests" HorizontalScrollBarVisibility="Visible" IsReadOnly="True"
+                  SelectedValuePath="VisitRequestID" MouseDoubleClick="dtgRequests_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding UserSurname}" Header="Фамилия"/>
+                <DataGridTextColumn Binding="{Binding UserName}" Header="Имя"/>
+                <DataGridTextColumn Binding="{Binding UserPatronymic}" Header="Отчество"/>
+                <DataGridTextColumn Binding="{Binding SubdivisionName}" Header="Подразделение"/>
+                <DataGridTextColumn Binding="{Binding EmployeeSurname}" Header="Сотрудник"/>
+                <DataGridTextColumn Binding="{Binding EmployeeCode}" Header="Код сотрудника"/>
+                <DataGridTextColumn Binding="{Binding VisitTypeName}" Header="Тип"/>
+                <DataGridTextColumn Binding="{Binding VisitPurposeName}" Header="Цель"/>
+                <DataGridTextColumn Binding="{Binding VisitDateTime, StringFormat={}{0:dd.MM.yyyy hh:mm}}" Header="Дата/время"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

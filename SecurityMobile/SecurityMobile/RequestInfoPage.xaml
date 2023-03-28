@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SecurityMobile.RequestInfoPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding UserSunrame, StringFormat='Фамилия: {0}'}" Margin="5" FontSize="20"/>
+            <Label Text="{Binding UserName, StringFormat='Имя: {0}'}" Margin="5" FontSize="20"/>
+            <Label Text="{Binding UserPatronymic, StringFormat='Отчество: {0}'}" Margin="5" FontSize="20"/>
+            <Label Text="{Binding VisitType, StringFormat='Тип посещения: {0}'}" Margin="5" FontSize="20"/>
+            <Label Text="{Binding Subdivision, StringFormat='Подразделение: {0}'}" Margin="5" FontSize="20"/>
+            <Label Text="{Binding EmployeeSurname, StringFormat='Сотрудник: {0}'}" Margin="5" FontSize="20"/>
+            <Label Text="{Binding VisitDateTime, StringFormat='Дата/время: {0:dd.MM.yyyy hh:mm}'}" Margin="5" FontSize="20"/>
+            <Button Text="Открыть турникет" Margin="5,5,5,50" FontSize="20" x:Name="btnOpenTournicket" Clicked="btnOpenTournicket_Clicked"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Время убытия" HorizontalOptions="Start" WidthRequest="200"  Margin="5" FontSize="20"/>
+                <TimePicker HorizontalOptions="End" WidthRequest="200"/>
+            </StackLayout>
+            <Button Text="Сохранить" FontSize="20" Margin="5" x:Name="btnSave" Clicked="btnSave_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
