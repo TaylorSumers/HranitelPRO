@@ -22,7 +22,7 @@ namespace SF2022User_NN_Lib
             {
                 startEndBusySpans.Add(new List<TimeSpan> { startTimes[i], startTimes[i]+TimeSpan.FromMinutes(durations[i]) });
             }
-            for (TimeSpan i = beginWorkingTime; i < endWorkingTime; )
+            for (TimeSpan i = beginWorkingTime; (i + TimeSpan.FromMinutes(consultationTime)) <= endWorkingTime; )
             {
                 TimeSpan freeTimeStart = i;
                 TimeSpan freeTimeEnd = i + TimeSpan.FromMinutes(consultationTime);
@@ -43,6 +43,12 @@ namespace SF2022User_NN_Lib
                         break;
                     }
 
+                    if (freeTimeStart <= span[0] && freeTimeEnd >= span[1])
+                    {
+                        i = span[1];
+                        isNotBusy = false;
+                        break;
+                    }
                 }
                 if(isNotBusy)
                 {

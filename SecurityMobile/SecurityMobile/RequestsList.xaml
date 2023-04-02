@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SecurityMobile.RequestsList"
+             NavigationPage.HasNavigationBar="False" >
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.09*"/>
+                    <RowDefinition Height="0.11*"/>
+                    <RowDefinition Height="0.8*"/>
+                </Grid.RowDefinitions>
+                <Frame BackgroundColor="#4287f5" Margin="-1" Padding="0">
+                    <Grid>
+                        <Label Text="Заявки" VerticalOptions="Center" FontSize="20" Margin="20,0" TextColor="White"/>
+                        <Button Text="QR" HorizontalOptions="End" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" FontSize="20" TextColor="White" Margin="10,0" BackgroundColor="SkyBlue" />
+                    </Grid>
+                </Frame>
+                <StackLayout Grid.Row="1" Orientation="Horizontal">
+                    <Picker x:Name="pType" HorizontalOptions="FillAndExpand" Title="Тип посещения" SelectedIndexChanged="pType_SelectedIndexChanged" >
+                        <Picker.Items>
+                            <x:String>Личное</x:String>
+                            <x:String>Групповое</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <Picker x:Name="pSubdiv" HorizontalOptions="FillAndExpand" Title="Подразделение" SelectedIndexChanged="pSubdiv_SelectedIndexChanged">
+                        <Picker.Items>
+                            <x:String>Производство</x:String>
+                            <x:String>Сбыт</x:String>
+                            <x:String>Администрация</x:String>
+                            <x:String>Служба безопасности</x:String>
+                            <x:String>Планирование</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <DatePicker x:Name="dpDate" HorizontalOptions="FillAndExpand" DateSelected="dpDate_DateSelected"/>
+                </StackLayout>
+                <ListView Grid.Row="2" x:Name="LVRequests" ItemSelected="LVRequests_ItemSelected" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Label MinimumHeightRequest="40" Margin="5" FontSize="20" HorizontalOptions="Start" Text="{Binding VisitDateTime, StringFormat='Дата/время: {0:dd.MM.yyyy hh:mm}'}" />
+                                    <Label MinimumHeightRequest="40" Margin="5" FontSize="20" HorizontalOptions="Start" Text="{Binding Subdivision, StringFormat='Подразделение: {0}'}"/>
+                                    <Label MinimumHeightRequest="40" Margin="5" FontSize="20" HorizontalOptions="Start" Text="{Binding VisitType, StringFormat='Тип посещения: {0}'}"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
