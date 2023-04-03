@@ -5,15 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Client.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="900" d:DesignWidth="1440"
+      d:DesignHeight="810" d:DesignWidth="1600"
       Title="PersonalVisitPage">
 
     <Grid Background="White">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="0.3*"/>
             <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="0.2*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.4*"/>
@@ -25,79 +25,108 @@
                 <Border Background="Orange" CornerRadius="10" Height="50">
                     <TextBlock Text="Информация для пропуска" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25"/>
                 </Border>
-                <TextBlock Text="Срок действия заявки:" Margin="2.5" HorizontalAlignment="Center" FontSize="25"/>
+                <TextBlock Text="Срок действия заявки:" HorizontalAlignment="Center" FontSize="20"  Margin="2.5"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock Text="C*" FontSize="25" Margin="2.5"/>
-                    <DatePicker Width="150" Margin="2.5"/>
-                    <TextBlock Text="по" FontSize="25" Margin="2.5"/>
-                    <DatePicker Width="150"  Margin="2.5"/>
+                    <TextBlock Text="C*" FontSize="20" Margin="2.5"/>
+                    <DatePicker Width="150" FontSize="15" Margin="2.5"/>
+                    <TextBlock Text="по" FontSize="20" Margin="2.5"/>
+                    <DatePicker Width="150" FontSize="15"  Margin="2.5"/>
                 </StackPanel>
-                <TextBlock HorizontalAlignment="Center" FontSize="25" Text="Цель посещения:"/>
-                
-                <ComboBox Margin="100, 2.5"/>
+                <TextBlock HorizontalAlignment="Center" FontSize="20" Text="Цель посещения:"  Margin="2.5"/>
+
+                <ComboBox Margin="100, 2.5" FontSize="15" />
             </StackPanel>
         </Border>
 
-        <Border Grid.Column="1">
+        <Border Background="LightGray" Grid.Column="1" CornerRadius="10" Margin="15">
             <StackPanel>
-                <TextBlock Text="Принимающая сторона"/>
-                <TextBlock Text="Подразделение*:"/>
-                <ComboBox/>
-                <TextBlock Text="ФИО Сотрудника*:"/>
-                <ComboBox/>
+                <Border Background="Orange" CornerRadius="10" Height="50">
+                    <TextBlock Text="Принимающая сторона" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25"/>
+                </Border>
+                <StackPanel Margin="80, 0">
+                    <TextBlock Text="Подразделение*:"  FontSize="20" Margin="2.5"/>
+                    <ComboBox  FontSize="15" Margin="2.5"/>
+                    <TextBlock Text="ФИО Сотрудника*:"  FontSize="20" Margin="2.5"/>
+                    <ComboBox  FontSize="15" Margin="2.5"/>
+                </StackPanel>
+                
             </StackPanel>
         </Border>
 
-        <Border Grid.Row="1" Grid.ColumnSpan="2">
-            <StackPanel HorizontalAlignment="Center">
-                <TextBlock Text="Информация о посетителе"/>
-                <Grid>
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Background="LightGray"  CornerRadius="10" Margin="15">
+            <StackPanel >
+                <Border Background="Orange" CornerRadius="10" Height="50">
+                    <TextBlock Text="Информация о посетителе" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25"/>
+                </Border>
+                <Grid Margin="20,10,0,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="0.15*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.15*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.3*"/>
                     </Grid.ColumnDefinitions>
 
                     <StackPanel>
-                        <TextBlock Text="Фамилия*:"/>
-                        <TextBlock Text="Имя*:"/>
-                        <TextBlock Text="Отчество:"/>
-                        <TextBlock Text="Телефон:"/>
-                        <TextBlock Text="E-mail:"/>
+                        <TextBlock Text="Фамилия*:" FontSize="25" Margin="0,10"/>
+                        <TextBlock Text="Имя*:" FontSize="25" Margin="0,10"/>
+                        <TextBlock Text="Отчество:" FontSize="25" Margin="0,10"/>
+                        <TextBlock Text="Телефон:" FontSize="25" Margin="0,10"/>
+                        <TextBlock Text="E-mail:" FontSize="25" Margin="0,10"/>
                     </StackPanel>
-                    <StackPanel Grid.Column="1">
-
+                    
+                    <StackPanel Grid.Column="1" Margin="0,0,20,0">
+                        <TextBox FontSize="25" Margin="0,9"/>
+                        <TextBox FontSize="25" Margin="0,9"/>
+                        <TextBox FontSize="25" Margin="0,9"/>
+                        <TextBox FontSize="25" Margin="0,9"/>
+                        <TextBox FontSize="25" Margin="0,9"/>
                     </StackPanel>
+                    
                     <StackPanel Grid.Column="2">
-                        <TextBlock Text="Организация:"/>
-                        <TextBlock Text="Примечание:"/>
-                        <TextBlock Text="Дата рождения:"/>
-                        <TextBlock Text="Серия:"/>
-                        <TextBlock Text="Номер:"/>
+                        <TextBlock Text="Организация:" FontSize="25" Margin="0,10"/>
+                        <TextBlock Text="Примечание:" FontSize="25" Margin="0,10"/>
+                        <TextBlock Text="Дата рождения:" FontSize="25" Margin="0,10"/>
+                        <TextBlock Text="Серия:" FontSize="25" Margin="0,10"/>
+                        <TextBlock Text="Номер:" FontSize="25" Margin="0,10"/>
                     </StackPanel>
-                    <StackPanel Grid.Column="3">
 
+                    <StackPanel Grid.Column="3" Margin="0,0,20,0">
+                        <TextBox FontSize="25" Margin="0,9"/>
+                        <TextBox FontSize="25" Margin="0,9"/>
+                        <DatePicker FontSize="20" Margin="0,9"/>
+                        <TextBox FontSize="25" Margin="0,9"/>
+                        <TextBox FontSize="25" Margin="0,9"/>
                     </StackPanel>
-                    <StackPanel Grid.Column="4">
-                        <Image Height="200" Width="200"/>
-                        <Button Content="Загрузить фото"/>
+
+                    <StackPanel Grid.Column="4" Margin="0,10,0,0">
+                        <Image Height="200" Width="200">
+                            <Image.Source>
+                                <Binding Path="UserPhoto">
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>/Resources/UserIcon.jpg</ImageSource>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+                        <Button Content="Загрузить фото" Background="White" BorderBrush="Orange" Height="40" BorderThickness="5" Width="200" FontSize="20" Margin="0,10,0,0"/>
                     </StackPanel>
                 </Grid>
             </StackPanel>
         </Border>
 
-        <Border Grid.Row="2">
+        <Border Grid.Row="2" Background="LightGray"  CornerRadius="10" Margin="15">
             <StackPanel>
-                <TextBlock Text="Прикрепляемые документы"/>
-                <Button Content="ПРИКРЕПИТЬ ФАЙЛ" Background="Transparent" HorizontalAlignment="Left" FontSize="20" Foreground="Gray" BorderBrush="Transparent" Margin="50"/>
+                <Border Background="Orange" CornerRadius="10" Height="50">
+                    <TextBlock Text="Прикрепляемые документы" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25"/>
+                </Border>
+                <Button Content="ПРИКРЕПИТЬ ФАЙЛ" Background="Transparent" HorizontalAlignment="Left" FontSize="20" Foreground="Gray" BorderBrush="Transparent" Margin="20,20"/>
             </StackPanel>
         </Border>
 
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="20">
-            <Button Content="Очистить форму" Background="Transparent" FontSize="30" Foreground="Gray" BorderBrush="Transparent" Margin="50"/>
-            <Button Content="Оформить заявку" Background="Transparent" BorderBrush="Orange" Height="70" BorderThickness="5" Width="300" FontSize="30"/>
+            <Button Content="Очистить форму" Background="Transparent" FontSize="25" Foreground="Gray" BorderBrush="Transparent" Margin="40,0" Height="50" Width="250"/>
+            <Button Content="Оформить заявку" Background="Transparent" BorderBrush="Orange" Height="50" BorderThickness="5" Width="250" FontSize="25"/>
         </StackPanel>
 
     </Grid>

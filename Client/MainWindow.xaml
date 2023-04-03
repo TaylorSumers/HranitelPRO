@@ -15,7 +15,7 @@
             <Image Width="70" Height="70" />
             <TextBlock Text="Название компании" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0"  FontSize="20"/>
         </StackPanel>
-        <Image Width="100" Height="100" HorizontalAlignment="Right" Margin="10"/>
-        <Frame Name="MainFrame"/>
+        <Image Width="70" Height="70" HorizontalAlignment="Right" Margin="10"/>
+        <Frame Grid.Row="1" Name="MainFrame"/>
     </Grid>
 </Window>
